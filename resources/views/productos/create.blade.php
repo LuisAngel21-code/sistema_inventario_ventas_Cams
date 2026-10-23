@@ -14,7 +14,7 @@
             </ul>
         </div>
         @endif
-        <form method="POST" action="{{ route('productos.store') }}" class="space-y-4">
+        <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="grid grid-cols-2 gap-4">
                 <div>
@@ -48,6 +48,12 @@
                     <label class="block text-sm font-medium text-slate-600 mb-1">Proveedor</label>
                     <input name="proveedor" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:border-[#1e3a5f] outline-none" placeholder="Proveedor Cams">
                 </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-600 mb-1">Imagen del producto</label>
+                <input type="file" name="imagen" accept="image/jpeg,image/png,image/webp"
+                    class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm text-slate-600 file:mr-3 file:px-3 file:py-1.5 file:rounded-lg file:border-0 file:bg-[#1e3a5f] file:text-white file:text-xs file:font-medium hover:file:bg-[#16304f]">
+                <p class="text-xs text-slate-400 mt-1">JPG, PNG o WEBP. Máximo 2 MB.</p>
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div>

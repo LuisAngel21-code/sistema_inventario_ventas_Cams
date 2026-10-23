@@ -37,7 +37,7 @@
                     <td class="py-3 px-4 text-slate-600">{{ $venta->fecha->format('d/m/Y H:i') }}</td>
                     <td class="py-3 px-4 text-slate-600">{{ $venta->sucursal->nombre }}</td>
                     <td class="py-3 px-4 text-slate-600">{{ $venta->cliente_nombre ?? '—' }}</td>
-                    <td class="py-3 px-4 text-slate-600">{{ $venta->detalleVentas->count() }} productos</td>
+                    <td class="py-3 px-4 text-slate-600">{{ $venta->detalleVentas->pluck('producto.nombre')->join(', ') }}</td>
                     <td class="py-3 px-4 text-right font-medium text-slate-800">S/ {{ number_format($venta->total, 2) }}</td>
                     <td class="py-3 px-4 text-right">
                         <a href="{{ route('ventas.detalle', $venta) }}" class="text-[#1e3a5f] hover:underline text-xs">Ver</a>

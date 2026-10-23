@@ -47,6 +47,10 @@
 
                 @if ($esAdmin || $esAlmacen)
                 <p class="px-3 pt-3 pb-1 text-xs uppercase text-white/40">Inventario</p>
+                <a href="{{ route('inventario.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors {{ $activo('inventario.index') }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 3h18v4H3z"/><path d="M5 7v14h14V7"/><path d="M9 11h6"/><path d="M9 15h6"/></svg>
+                    Inventario
+                </a>
                 <a href="{{ route('inventario.movimientos') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors {{ $activo('inventario.movimientos') }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
                     Movimientos

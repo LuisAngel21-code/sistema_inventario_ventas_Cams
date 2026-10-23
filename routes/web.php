@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/productos/{producto}/stock', [ProductoController::class, 'actualizarStock'])->name('productos.stock');
         Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
 
+        Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
         Route::get('/inventario/movimientos', [InventarioController::class, 'movimientos'])->name('inventario.movimientos');
         Route::get('/inventario/ingreso', [InventarioController::class, 'mostrarRegistroIngreso'])->name('inventario.ingreso');
         Route::post('/inventario/ingreso', [InventarioController::class, 'registrarIngreso']);

@@ -7,11 +7,31 @@ use App\Models\DetalleCompra;
 use App\Models\Movimiento;
 use App\Models\Producto;
 use App\Models\Stock;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class InventarioController extends Controller
 {
+    // HU-06: muestra el stock disponible de los productos, con filtro por categoría y sucursal.
+    public function index(Request $request)
+    {
+        $usuario = $request->user();
+
+        $stocks = Stock::with(['producto', 'sucursal'])
+            ->when(!$usuario->esAdmin(), fn ($q) => $q->where('sucursal_id', $usuario->sucursal_id))
+            ->when($request->get('sucursal_id'), fn ($q, $sucursalId) => $q->where('sucursal_id', $sucursalId))
+            ->when($request->get('categoria'), function ($q, $categoria) {
+                $q->whereHas('producto', fn ($producto) => $producto->where('categoria', $categoria));
+            })
+            ->get();
+
+        return view('inventario.index', [
+            'stocks' => $stocks,
+            'categorias' => Producto::distinct()->orderBy('categoria')->pluck('categoria'),
+            'sucursales' => Sucursal::where('activo', true)->orderBy('nombre')->get(),
+        ]);
+    }
     public function movimientos(Request $request)
     {
         $usuario = $request->user();
@@ -69,7 +89,7 @@ class InventarioController extends Controller
                 'sucursal_id' => $datos['sucursal_id'],
                 'tipo' => Movimiento::TIPO_ENTRADA,
                 'cantidad' => $datos['cantidad'],
-                'motivo' => $datos['motivo'],
+                'motivo' => $datos['motivo'] ?? null,
                 'usuario_id' => $request->user()->id,
             ]);
         });

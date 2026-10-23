@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -37,12 +38,16 @@ class ProductoController extends Controller
             'categoria' => ['required', 'string', 'max:50'],
             'marca' => ['nullable', 'string', 'max:50'],
             'proveedor' => ['nullable', 'string', 'max:100'],
-            'imagen' => ['nullable', 'string', 'max:255'],
+            'imagen' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'costo' => ['required', 'numeric', 'min:0'],
             'precio_base' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'stock_minimo' => ['required', 'integer', 'min:0'],
         ]);
+
+        if ($request->hasFile('imagen')) {
+            $datos['imagen'] = $request->file('imagen')->store('productos', 'public');
+        }
 
         Producto::create($datos);
 
@@ -63,11 +68,19 @@ class ProductoController extends Controller
             'categoria' => ['required', 'string', 'max:50'],
             'marca' => ['nullable', 'string', 'max:50'],
             'proveedor' => ['nullable', 'string', 'max:100'],
-            'imagen' => ['nullable', 'string', 'max:255'],
+            'imagen' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'costo' => ['required', 'numeric', 'min:0'],
             'precio_base' => ['required', 'numeric', 'min:0'],
             'stock_minimo' => ['required', 'integer', 'min:0'],
         ]);
+
+        if ($request->hasFile('imagen')) {
+            if ($producto->imagen) {
+                Storage::disk('public')->delete($producto->imagen);
+            }
+
+            $datos['imagen'] = $request->file('imagen')->store('productos', 'public');
+        }
 
         $producto->update($datos);
 

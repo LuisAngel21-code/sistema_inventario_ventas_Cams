@@ -20,6 +20,7 @@ class Movimiento extends Model
         'cantidad',
         'motivo',
         'usuario_id',
+        'fecha',
     ];
 
     protected $casts = [

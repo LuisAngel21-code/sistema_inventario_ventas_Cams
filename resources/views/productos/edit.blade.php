@@ -10,7 +10,7 @@
             <ul class="list-disc pl-4">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
         </div>
         @endif
-        <form method="POST" action="{{ route('productos.update', $producto) }}" class="space-y-4">
+        <form method="POST" action="{{ route('productos.update', $producto) }}" enctype="multipart/form-data" class="space-y-4">
             @csrf @method('PUT')
             <div class="grid grid-cols-2 gap-4">
                 <div>
@@ -39,6 +39,18 @@
                     <label class="block text-sm font-medium text-slate-600 mb-1">Proveedor</label>
                     <input name="proveedor" value="{{ $producto->proveedor }}" class="w-full px-3 py-2 rounded-xl border border-slate-200 focus:border-[#1e3a5f] focus:ring-2 focus:ring-[#1e3a5f]/10 outline-none transition-all">
                 </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-600 mb-1">Imagen del producto</label>
+                @if ($producto->imagen)
+                <div class="flex items-center gap-3 mb-2">
+                    <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+                    <span class="text-xs text-slate-500">Imagen actual</span>
+                </div>
+                @endif
+                <input type="file" name="imagen" accept="image/jpeg,image/png,image/webp"
+                    class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm text-slate-600 file:mr-3 file:px-3 file:py-1.5 file:rounded-lg file:border-0 file:bg-[#1e3a5f] file:text-white file:text-xs file:font-medium hover:file:bg-[#16304f]">
+                <p class="text-xs text-slate-400 mt-1">JPG, PNG o WEBP. Máximo 2 MB. Déjalo vacío para conservar la actual.</p>
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div>

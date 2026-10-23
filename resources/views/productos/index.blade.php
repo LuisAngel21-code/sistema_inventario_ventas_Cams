@@ -46,8 +46,19 @@
                 <tr class="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
                     <td class="py-3.5 px-5 text-slate-400 font-mono text-xs">{{ $producto->codigo }}</td>
                     <td class="py-3.5 px-5">
-                        <p class="font-medium text-[#1e293b]">{{ $producto->nombre }}</p>
-                        <p class="text-xs text-slate-500 mt-0.5 max-w-[220px] truncate">{{ $producto->descripcion }}</p>
+                        <div class="flex items-center gap-3">
+                            @if ($producto->imagen)
+                            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}" class="w-10 h-10 rounded-lg object-cover border border-slate-200 flex-shrink-0">
+                            @else
+                            <div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            </div>
+                            @endif
+                            <div>
+                                <p class="font-medium text-[#1e293b]">{{ $producto->nombre }}</p>
+                                <p class="text-xs text-slate-500 mt-0.5 max-w-[220px] truncate">{{ $producto->descripcion }}</p>
+                            </div>
+                        </div>
                     </td>
                     <td class="py-3.5 px-5">
                         <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-[#1e3a5f]/5 text-[#1e3a5f]">{{ $producto->categoria }}</span>
