@@ -9,6 +9,7 @@ use App\Models\Stock;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class VentaController extends Controller
 {
@@ -52,7 +53,9 @@ class VentaController extends Controller
                 $stockDisponible = $stock ? $stock->cantidad : 0;
 
                 if ($item['cantidad'] > $stockDisponible) {
-                    abort(422, "Stock insuficiente para {$producto->nombre}. Disponible: {$stockDisponible}");
+                    throw ValidationException::withMessages([
+                        'items' => "Stock insuficiente para {$producto->nombre}. Disponible: {$stockDisponible}",
+                    ]);
                 }
 
                 $totalVenta += $producto->precio_base * $item['cantidad'];

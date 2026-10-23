@@ -68,7 +68,8 @@ class VentaTest extends TestCase
     {
         $response = $this->registrarVenta(999);
 
-        $response->assertStatus(422);
+        $response->assertSessionHasErrors('items');
+        $response->assertRedirect();
         $this->assertDatabaseCount('ventas', 0);
     }
 
