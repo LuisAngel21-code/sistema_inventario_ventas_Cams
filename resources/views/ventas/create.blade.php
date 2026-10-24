@@ -50,7 +50,7 @@
                             <select :name="'items['+index+'][producto_id]'" x-model="item.producto_id" required class="w-full px-3 py-2 rounded-lg border border-slate-300 text-slate-600 bg-white text-sm focus:border-[#1e3a5f] outline-none">
                                 <option value="">Seleccionar...</option>
                                 @foreach ($productos as $producto)
-                                <option value="{{ $producto->id }}">{{ $producto->nombre }} (stock: {{ $producto->stock }})</option>
+                                <option value="{{ $producto->id }}">{{ $producto->nombre }} (stock: {{ $producto->stock_sucursal }})</option>
                                 @endforeach
                             </select>
                         </div>

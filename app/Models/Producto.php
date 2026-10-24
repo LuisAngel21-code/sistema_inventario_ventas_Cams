@@ -38,6 +38,11 @@ class Producto extends Model
         return $this->hasMany(Movimiento::class);
     }
 
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class);
+    }
+
     public function detalleVentas()
     {
         return $this->hasMany(DetalleVenta::class);

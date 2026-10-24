@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\Users\luisa\tienda-cams\phpunit.xml" tests="56" assertions="118" errors="0" failures="0" skipped="0" time="3.726318">
+    <testsuite name="Unit" tests="22" assertions="23" errors="0" failures="0" skipped="0" time="0.884876">
+      <testsuite name="Tests\Unit\CompraTest" file="C:\Users\luisa\tienda-cams\tests\Unit\CompraTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.600037">
+        <testcase name="compra_relacionDetalleCompras_debeRetornarDetalles" file="C:\Users\luisa\tienda-cams\tests\Unit\CompraTest.php" line="15" class="Tests\Unit\CompraTest" classname="Tests.Unit.CompraTest" assertions="1" time="0.600037"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\DetalleVentaTest" file="C:\Users\luisa\tienda-cams\tests\Unit\DetalleVentaTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.019082">
+        <testcase name="detalleVenta_calcularSubtotal_debeRetornarMonto" file="C:\Users\luisa\tienda-cams\tests\Unit\DetalleVentaTest.php" line="15" class="Tests\Unit\DetalleVentaTest" classname="Tests.Unit.DetalleVentaTest" assertions="1" time="0.008275"/>
+        <testcase name="detalleVenta_relacionProducto_debeRetornarProducto" file="C:\Users\luisa\tienda-cams\tests\Unit\DetalleVentaTest.php" line="29" class="Tests\Unit\DetalleVentaTest" classname="Tests.Unit.DetalleVentaTest" assertions="1" time="0.010808"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\MovimientoTest" file="C:\Users\luisa\tienda-cams\tests\Unit\MovimientoTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.015564">
+        <testcase name="movimiento_tiposEntradaYSalida_debenExistir" file="C:\Users\luisa\tienda-cams\tests\Unit\MovimientoTest.php" line="15" class="Tests\Unit\MovimientoTest" classname="Tests.Unit.MovimientoTest" assertions="2" time="0.007705"/>
+        <testcase name="movimiento_relacionProducto_debeRetornarProducto" file="C:\Users\luisa\tienda-cams\tests\Unit\MovimientoTest.php" line="25" class="Tests\Unit\MovimientoTest" classname="Tests.Unit.MovimientoTest" assertions="1" time="0.007859"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\OtpCodeTest" file="C:\Users\luisa\tienda-cams\tests\Unit\OtpCodeTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.021317">
+        <testcase name="esValido_conCodigoCorrectoYVigente_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\OtpCodeTest.php" line="15" class="Tests\Unit\OtpCodeTest" classname="Tests.Unit.OtpCodeTest" assertions="1" time="0.012939"/>
+        <testcase name="esValido_conCodigoIncorrecto_debeRetornarFalse" file="C:\Users\luisa\tienda-cams\tests\Unit\OtpCodeTest.php" line="30" class="Tests\Unit\OtpCodeTest" classname="Tests.Unit.OtpCodeTest" assertions="1" time="0.008378"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ProductoTest" file="C:\Users\luisa\tienda-cams\tests\Unit\ProductoTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.056408">
+        <testcase name="actualizarStock_conCantidadValida_debeGuardarNuevoValor" file="C:\Users\luisa\tienda-cams\tests\Unit\ProductoTest.php" line="26" class="Tests\Unit\ProductoTest" classname="Tests.Unit.ProductoTest" assertions="1" time="0.025847"/>
+        <testcase name="actualizarStock_conCantidadCero_debeGuardarCero" file="C:\Users\luisa\tienda-cams\tests\Unit\ProductoTest.php" line="39" class="Tests\Unit\ProductoTest" classname="Tests.Unit.ProductoTest" assertions="1" time="0.015483"/>
+        <testcase name="tieneStockBajo_conStockIgualAlMinimo_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\ProductoTest.php" line="52" class="Tests\Unit\ProductoTest" classname="Tests.Unit.ProductoTest" assertions="1" time="0.007836"/>
+        <testcase name="tieneStockBajo_conStockMayorAlMinimo_debeRetornarFalse" file="C:\Users\luisa\tienda-cams\tests\Unit\ProductoTest.php" line="63" class="Tests\Unit\ProductoTest" classname="Tests.Unit.ProductoTest" assertions="1" time="0.007241"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\RecoveryTokenTest" file="C:\Users\luisa\tienda-cams\tests\Unit\RecoveryTokenTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.014743">
+        <testcase name="sigueVigente_conTokenNoUsadoYVigente_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\RecoveryTokenTest.php" line="15" class="Tests\Unit\RecoveryTokenTest" classname="Tests.Unit.RecoveryTokenTest" assertions="1" time="0.007301"/>
+        <testcase name="sigueVigente_conTokenUsado_debeRetornarFalse" file="C:\Users\luisa\tienda-cams\tests\Unit\RecoveryTokenTest.php" line="29" class="Tests\Unit\RecoveryTokenTest" classname="Tests.Unit.RecoveryTokenTest" assertions="1" time="0.007442"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\StockTest" file="C:\Users\luisa\tienda-cams\tests\Unit\StockTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.072479">
+        <testcase name="incrementar_conCantidadPositiva_debeSumarCorrectamente" file="C:\Users\luisa\tienda-cams\tests\Unit\StockTest.php" line="23" class="Tests\Unit\StockTest" classname="Tests.Unit.StockTest" assertions="1" time="0.031999"/>
+        <testcase name="decrementar_conCantidadPositiva_debeRestarCorrectamente" file="C:\Users\luisa\tienda-cams\tests\Unit\StockTest.php" line="36" class="Tests\Unit\StockTest" classname="Tests.Unit.StockTest" assertions="1" time="0.040480"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\SucursalTest" file="C:\Users\luisa\tienda-cams\tests\Unit\SucursalTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.016622">
+        <testcase name="usuarios_conSucursalConUsuarios_debeRetornarRelacion" file="C:\Users\luisa\tienda-cams\tests\Unit\SucursalTest.php" line="15" class="Tests\Unit\SucursalTest" classname="Tests.Unit.SucursalTest" assertions="1" time="0.016622"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\UsuarioTest" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" tests="6" assertions="6" errors="0" failures="0" skipped="0" time="0.068623">
+        <testcase name="verificarCredenciales_contrasenaCorrecta_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="15" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.016106"/>
+        <testcase name="verificarCredenciales_contrasenaIncorrecta_debeRetornarFalse" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="26" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.012518"/>
+        <testcase name="esAdmin_conRolAdministrador_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="37" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.007212"/>
+        <testcase name="esAdmin_conRolNoAdministrador_debeRetornarFalse" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="48" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.012468"/>
+        <testcase name="esJefe_conRolJefe_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="59" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.012763"/>
+        <testcase name="esEncargadoTienda_conRolTienda_debeRetornarTrue" file="C:\Users\luisa\tienda-cams\tests\Unit\UsuarioTest.php" line="70" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="1" time="0.007556"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="34" assertions="95" errors="0" failures="0" skipped="0" time="2.841443">
+      <testsuite name="Tests\Feature\Sprint1\CodigoTemporalTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\CodigoTemporalTest.php" tests="4" assertions="14" errors="0" failures="0" skipped="0" time="0.200395">
+        <testcase name="verificar_codigoVacio_debeMostrarError" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\CodigoTemporalTest.php" line="36" class="Tests\Feature\Sprint1\CodigoTemporalTest" classname="Tests.Feature.Sprint1.CodigoTemporalTest" assertions="3" time="0.059444"/>
+        <testcase name="verificar_codigoValido_debePermitirAcceso" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\CodigoTemporalTest.php" line="50" class="Tests\Feature\Sprint1\CodigoTemporalTest" classname="Tests.Feature.Sprint1.CodigoTemporalTest" assertions="5" time="0.042064"/>
+        <testcase name="verificar_codigoIncorrecto_debeRechazarAcceso" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\CodigoTemporalTest.php" line="70" class="Tests\Feature\Sprint1\CodigoTemporalTest" classname="Tests.Feature.Sprint1.CodigoTemporalTest" assertions="3" time="0.045972"/>
+        <testcase name="verificar_codigoExpirado_debeRechazarAcceso" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\CodigoTemporalTest.php" line="84" class="Tests\Feature\Sprint1\CodigoTemporalTest" classname="Tests.Feature.Sprint1.CodigoTemporalTest" assertions="3" time="0.052914"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint1\LoginTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\LoginTest.php" tests="3" assertions="8" errors="0" failures="0" skipped="0" time="0.112660">
+        <testcase name="acceder_credencialesCorrectas_debePermitirAcceso" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\LoginTest.php" line="22" class="Tests\Feature\Sprint1\LoginTest" classname="Tests.Feature.Sprint1.LoginTest" assertions="2" time="0.040303"/>
+        <testcase name="acceder_credencialesVacias_debeMostrarError" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\LoginTest.php" line="37" class="Tests\Feature\Sprint1\LoginTest" classname="Tests.Feature.Sprint1.LoginTest" assertions="3" time="0.030639"/>
+        <testcase name="acceder_credencialesIncorrectas_debeMostrarMensaje" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\LoginTest.php" line="51" class="Tests\Feature\Sprint1\LoginTest" classname="Tests.Feature.Sprint1.LoginTest" assertions="3" time="0.041717"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint1\RecuperacionTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\RecuperacionTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.165975">
+        <testcase name="recuperar_correoVacio_debeMostrarError" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\RecuperacionTest.php" line="23" class="Tests\Feature\Sprint1\RecuperacionTest" classname="Tests.Feature.Sprint1.RecuperacionTest" assertions="2" time="0.030275"/>
+        <testcase name="recuperar_correoRegistrado_debeContinuarProceso" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\RecuperacionTest.php" line="36" class="Tests\Feature\Sprint1\RecuperacionTest" classname="Tests.Feature.Sprint1.RecuperacionTest" assertions="2" time="0.075180"/>
+        <testcase name="recuperar_nuevaContrasena_debeGenerarTokenVigente" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\RecuperacionTest.php" line="50" class="Tests\Feature\Sprint1\RecuperacionTest" classname="Tests.Feature.Sprint1.RecuperacionTest" assertions="2" time="0.060519"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint1\SucursalTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\SucursalTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.175461">
+        <testcase name="registrar_datosCompletos_debeGuardarSucursal" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\SucursalTest.php" line="25" class="Tests\Feature\Sprint1\SucursalTest" classname="Tests.Feature.Sprint1.SucursalTest" assertions="2" time="0.045038"/>
+        <testcase name="consultar_sucursalesRegistradas_debeMostrarLista" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\SucursalTest.php" line="41" class="Tests\Feature\Sprint1\SucursalTest" classname="Tests.Feature.Sprint1.SucursalTest" assertions="2" time="0.059331"/>
+        <testcase name="cambiar_estadoActivaInactiva_debeActualizar" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint1\SucursalTest.php" line="59" class="Tests\Feature\Sprint1\SucursalTest" classname="Tests.Feature.Sprint1.SucursalTest" assertions="2" time="0.071092"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint2\ProductoTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\ProductoTest.php" tests="3" assertions="8" errors="0" failures="0" skipped="0" time="0.165328">
+        <testcase name="registrar_categoriaCamaColchon_debeGuardarProducto" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\ProductoTest.php" line="25" class="Tests\Feature\Sprint2\ProductoTest" classname="Tests.Feature.Sprint2.ProductoTest" assertions="2" time="0.056949"/>
+        <testcase name="registrar_datosObligatoriosFaltantes_debeMostrarError" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\ProductoTest.php" line="45" class="Tests\Feature\Sprint2\ProductoTest" classname="Tests.Feature.Sprint2.ProductoTest" assertions="4" time="0.038777"/>
+        <testcase name="registrar_productoExitoso_debeAparecerEnCatalogo" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\ProductoTest.php" line="60" class="Tests\Feature\Sprint2\ProductoTest" classname="Tests.Feature.Sprint2.ProductoTest" assertions="2" time="0.069602"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint2\StockTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\StockTest.php" tests="3" assertions="7" errors="0" failures="0" skipped="0" time="0.207952">
+        <testcase name="actualizar_cantidadValida_debeModificarStock" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\StockTest.php" line="25" class="Tests\Feature\Sprint2\StockTest" classname="Tests.Feature.Sprint2.StockTest" assertions="2" time="0.060482"/>
+        <testcase name="actualizar_cantidadInvalida_debeRechazar" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\StockTest.php" line="40" class="Tests\Feature\Sprint2\StockTest" classname="Tests.Feature.Sprint2.StockTest" assertions="3" time="0.070853"/>
+        <testcase name="actualizar_stockGuardado_debeMostrarNuevoValor" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint2\StockTest.php" line="55" class="Tests\Feature\Sprint2\StockTest" classname="Tests.Feature.Sprint2.StockTest" assertions="2" time="0.076617"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint3\IngresoTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\IngresoTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.373164">
+        <testcase name="ingreso_seleccionarProductoYCantidad_debeGuardar" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\IngresoTest.php" line="30" class="Tests\Feature\Sprint3\IngresoTest" classname="Tests.Feature.Sprint3.IngresoTest" assertions="3" time="0.116340"/>
+        <testcase name="ingreso_confirmar_debeIncrementarStock" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\IngresoTest.php" line="47" class="Tests\Feature\Sprint3\IngresoTest" classname="Tests.Feature.Sprint3.IngresoTest" assertions="2" time="0.132760"/>
+        <testcase name="ingreso_registrado_debeCrearMovimientoEntrada" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\IngresoTest.php" line="67" class="Tests\Feature\Sprint3\IngresoTest" classname="Tests.Feature.Sprint3.IngresoTest" assertions="1" time="0.124064"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint3\InventarioTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\InventarioTest.php" tests="3" assertions="8" errors="0" failures="0" skipped="0" time="0.309367">
+        <testcase name="inventario_muestraProductosYCantidad" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\InventarioTest.php" line="26" class="Tests\Feature\Sprint3\InventarioTest" classname="Tests.Feature.Sprint3.InventarioTest" assertions="3" time="0.092981"/>
+        <testcase name="inventario_filtraCamasYColchones_debeMostrarSoloEsos" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\InventarioTest.php" line="42" class="Tests\Feature\Sprint3\InventarioTest" classname="Tests.Feature.Sprint3.InventarioTest" assertions="3" time="0.139664"/>
+        <testcase name="inventario_cantidadMostrada_debeCoincidirConBd" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\InventarioTest.php" line="60" class="Tests\Feature\Sprint3\InventarioTest" classname="Tests.Feature.Sprint3.InventarioTest" assertions="2" time="0.076723"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint3\MovimientoTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\MovimientoTest.php" tests="3" assertions="10" errors="0" failures="0" skipped="0" time="0.285501">
+        <testcase name="movimientos_muestraEntradaYSalida" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\MovimientoTest.php" line="46" class="Tests\Feature\Sprint3\MovimientoTest" classname="Tests.Feature.Sprint3.MovimientoTest" assertions="3" time="0.115084"/>
+        <testcase name="movimientos_muestraProductoTipoCantidadFecha" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\MovimientoTest.php" line="62" class="Tests\Feature\Sprint3\MovimientoTest" classname="Tests.Feature.Sprint3.MovimientoTest" assertions="5" time="0.079388"/>
+        <testcase name="movimientos_consultar_debeRetornarListado" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint3\MovimientoTest.php" line="79" class="Tests\Feature\Sprint3\MovimientoTest" classname="Tests.Feature.Sprint3.MovimientoTest" assertions="2" time="0.091029"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint4\HistorialTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\HistorialTest.php" tests="3" assertions="10" errors="0" failures="0" skipped="0" time="0.471503">
+        <testcase name="historial_muestraFechaProductosYMonto" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\HistorialTest.php" line="56" class="Tests\Feature\Sprint4\HistorialTest" classname="Tests.Feature.Sprint4.HistorialTest" assertions="4" time="0.128377"/>
+        <testcase name="historial_detalleVenta_debeMostrarLineas" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\HistorialTest.php" line="73" class="Tests\Feature\Sprint4\HistorialTest" classname="Tests.Feature.Sprint4.HistorialTest" assertions="3" time="0.151904"/>
+        <testcase name="historial_filtrarPorFecha_debeMostrarSoloRango" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\HistorialTest.php" line="89" class="Tests\Feature\Sprint4\HistorialTest" classname="Tests.Feature.Sprint4.HistorialTest" assertions="3" time="0.191222"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Sprint4\VentaTest" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\VentaTest.php" tests="3" assertions="12" errors="0" failures="0" skipped="0" time="0.374137">
+        <testcase name="venta_registrarProductoCantidad_debeCrearVenta" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\VentaTest.php" line="49" class="Tests\Feature\Sprint4\VentaTest" classname="Tests.Feature.Sprint4.VentaTest" assertions="5" time="0.135256"/>
+        <testcase name="venta_cantidadSuperaStock_debeRechazar" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\VentaTest.php" line="67" class="Tests\Feature\Sprint4\VentaTest" classname="Tests.Feature.Sprint4.VentaTest" assertions="4" time="0.068473"/>
+        <testcase name="venta_confirmar_debeDisminuirStock" file="C:\Users\luisa\tienda-cams\tests\Feature\Sprint4\VentaTest.php" line="80" class="Tests\Feature\Sprint4\VentaTest" classname="Tests.Feature.Sprint4.VentaTest" assertions="3" time="0.170408"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,1 @@
+﻿Carpeta para capturas manuales adicionales. Las capturas automaticas estan en evidencias\selenium.

@@ -16,14 +16,27 @@ class VentaController extends Controller
     public function create(Request $request)
     {
         $usuario = $request->user();
-        $productos = Producto::with(['movimientos'])
-            ->where('activo', true)
+        $sucursalId = $usuario->sucursal_id;
+
+        $productos = Producto::where('activo', true)
+            ->with(['stocks' => fn ($consulta) => $consulta->where('sucursal_id', $sucursalId)])
             ->orderBy('nombre')
-            ->get();
+            ->get()
+            ->map(function ($producto) use ($sucursalId) {
+                $producto->stock_sucursal = $sucursalId
+                    ? (int) ($producto->stocks->first()->cantidad ?? 0)
+                    : (int) $producto->stock;
+
+                return $producto;
+            })
+            ->when($sucursalId, fn ($lista) => $lista->filter(
+                fn ($producto) => $producto->stock_sucursal > 0
+            ))
+            ->values();
 
         return view('ventas.create', [
             'productos' => $productos,
-            'sucursalId' => $usuario->sucursal_id,
+            'sucursalId' => $sucursalId,
         ]);
     }
 

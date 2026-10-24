@@ -1,0 +1,450 @@
+﻿"ID","Title","Status","Folder","Emoji","Priority","Tags","Owner","Description","Labels","Issues"
+"","TC-01 - Acceso con credenciales correctas","automated","Sprint 1/HU-01 Inicio de sesion","","high","HU-01, CA-01, Alta","Luis Angel","**Precondiciones:** Usuario activo con contrasena y OTP configurado.
+
+**Datos de prueba:** usuario: admin@cams.com | clave: cams2026 | OTP: JBSWY3DPEHPK3PXP
+
+**Pasos:**
+1. Abrir /login.
+2. Ingresar usuario y contrasena.
+3. Enviar el formulario.
+4. Ingresar el codigo de 6 digitos.
+
+**Resultado esperado:** Accede al dashboard correspondiente a su rol.
+
+**Criterio de aceptacion:** El usuario ingresa al sistema con sus credenciales y un codigo vigente.
+
+**Automatizacion:** LoginTest.php, hu01_login.feature, LoginTest.java","",""
+"","TC-02 - Acceso con credenciales incorrectas","automated","Sprint 1/HU-01 Inicio de sesion","","high","HU-01, CA-02, Alta","Luis Angel","**Precondiciones:** Usuario existente.
+
+**Datos de prueba:** usuario: admin@cams.com | clave: clave-mala
+
+**Pasos:**
+1. Abrir /login.
+2. Ingresar usuario y clave incorrecta.
+3. Enviar.
+
+**Resultado esperado:** Mensaje 'Las credenciales ingresadas no son validas' y permanece en /login.
+
+**Criterio de aceptacion:** El sistema rechaza el acceso y avisa que las credenciales no son validas.
+
+**Automatizacion:** LoginTest.php, hu01_login.feature, LoginTest.java","",""
+"","TC-03 - Acceso sin credenciales","automated","Sprint 1/HU-01 Inicio de sesion","","high","HU-01, CA-03, Alta","Luis Angel","**Precondiciones:** Ninguna.
+
+**Datos de prueba:** usuario vacio | clave vacia
+
+**Pasos:**
+1. Abrir /login.
+2. Enviar el formulario vacio.
+
+**Resultado esperado:** Muestra mensajes de validacion y no permite el acceso.
+
+**Criterio de aceptacion:** El sistema no permite enviar el formulario sin usuario ni contrasena.
+
+**Automatizacion:** LoginTest.php, hu01_login.feature, LoginTest.java","",""
+"","TC-04 - Recuperacion con correo registrado","automated","Sprint 1/HU-02 Recuperacion","","low","HU-02, CA-01, Baja","Luis Angel","**Precondiciones:** Correo registrado en el sistema.
+
+**Datos de prueba:** correo: admin@cams.com
+
+**Pasos:**
+1. Abrir /recuperar.
+2. Ingresar el correo.
+3. Enviar.
+
+**Resultado esperado:** Mensaje 'Si el correo esta registrado, recibiras instrucciones'.
+
+**Criterio de aceptacion:** El sistema continua el proceso de recuperacion para un correo registrado.
+
+**Automatizacion:** RecuperacionTest.php, hu02_recuperacion.feature, RecuperacionTest.java","",""
+"","TC-05 - Recuperacion con correo no registrado","automated","Sprint 1/HU-02 Recuperacion","","low","HU-02, CA-02, Baja","Luis Angel","**Precondiciones:** Correo que no existe.
+
+**Datos de prueba:** correo: noexiste@cams.com
+
+**Pasos:**
+1. Abrir /recuperar.
+2. Ingresar el correo no registrado.
+3. Enviar.
+
+**Resultado esperado:** Muestra el mismo mensaje generico, sin revelar si el correo existe.
+
+**Criterio de aceptacion:** El sistema responde igual ante un correo inexistente.
+
+**Automatizacion:** RecuperacionTest.php, hu02_recuperacion.feature","",""
+"","TC-06 - Establecer una nueva contrasena","automated","Sprint 1/HU-02 Recuperacion","","low","HU-02, CA-03, Baja","Luis Angel","**Precondiciones:** Token de recuperacion vigente.
+
+**Datos de prueba:** token vigente | nueva clave: nueva2026
+
+**Pasos:**
+1. Abrir el enlace de recuperacion.
+2. Ingresar la nueva contrasena.
+3. Confirmar.
+
+**Resultado esperado:** La contrasena se actualiza y permite iniciar sesion.
+
+**Criterio de aceptacion:** El usuario puede establecer una nueva contrasena con un token vigente.
+
+**Automatizacion:** RecoveryTokenTest.php, RecuperacionTest.php, hu02_recuperacion.feature","",""
+"","TC-07 - Codigo OTP vigente","automated","Sprint 1/HU-03 Codigo","","high","HU-03, CA-01, Alta","Luis Angel","**Precondiciones:** Usuario con secreto TOTP registrado.
+
+**Datos de prueba:** OTP calculado con el secreto JBSWY3DPEHPK3PXP
+
+**Pasos:**
+1. Iniciar sesion con credenciales correctas.
+2. Ingresar el codigo de 6 digitos vigente.
+3. Confirmar.
+
+**Resultado esperado:** El sistema acepta el codigo y permite el acceso.
+
+**Criterio de aceptacion:** Un codigo vigente permite completar el segundo factor.
+
+**Automatizacion:** OtpCodeTest.php, CodigoTemporalTest.php, hu03_codigo.feature, CodigoTest.java","",""
+"","TC-08 - Codigo OTP incorrecto","automated","Sprint 1/HU-03 Codigo","","high","HU-03, CA-02, Alta","Luis Angel","**Precondiciones:** Usuario en la pantalla de codigo.
+
+**Datos de prueba:** codigo: 000000
+
+**Pasos:**
+1. Iniciar sesion.
+2. Ingresar un codigo incorrecto.
+3. Confirmar.
+
+**Resultado esperado:** Rechaza el codigo y muestra un mensaje de error.
+
+**Criterio de aceptacion:** Un codigo incorrecto no permite el acceso.
+
+**Automatizacion:** OtpCodeTest.php, CodigoTemporalTest.php, hu03_codigo.feature","",""
+"","TC-09 - Codigo OTP expirado","automated","Sprint 1/HU-03 Codigo","","high","HU-03, CA-03, Alta","Luis Angel","**Precondiciones:** Codigo vencido o ya utilizado.
+
+**Datos de prueba:** codigo expirado
+
+**Pasos:**
+1. Iniciar sesion.
+2. Ingresar un codigo vencido.
+3. Confirmar.
+
+**Resultado esperado:** Rechaza el codigo y vuelve al login.
+
+**Criterio de aceptacion:** Un codigo expirado no permite el acceso.
+
+**Automatizacion:** CodigoTemporalTest.php, hu03_codigo.feature","",""
+"","TC-10 - Registrar una sucursal","automated","Sprint 1/HU-13 Sucursales","","normal","HU-13, CA-01, Media","Luis Angel","**Precondiciones:** Usuario con permiso de administracion.
+
+**Datos de prueba:** nombre: Sucursal Behat | direccion: Av. Principal 123 | telefono: 987654321
+
+**Pasos:**
+1. Abrir /sucursales/crear.
+2. Completar los datos.
+3. Guardar.
+
+**Resultado esperado:** La sucursal se guarda y aparece en el listado.
+
+**Criterio de aceptacion:** El sistema registra la sucursal con sus datos principales.
+
+**Automatizacion:** SucursalTest.php, hu13_sucursales.feature, SucursalTest.java","",""
+"","TC-11 - Consultar las sucursales registradas","automated","Sprint 1/HU-13 Sucursales","","normal","HU-13, CA-02, Media","Luis Angel","**Precondiciones:** Sucursales creadas.
+
+**Datos de prueba:** sucursales existentes
+
+**Pasos:**
+1. Abrir /sucursales.
+2. Revisar el listado.
+
+**Resultado esperado:** Se muestra el listado con nombre, direccion y estado.
+
+**Criterio de aceptacion:** El usuario puede ver todas las sucursales registradas.
+
+**Automatizacion:** SucursalTest.php, hu13_sucursales.feature, EvidenciasTest.java","",""
+"","TC-12 - Cambiar el estado de una sucursal","automated","Sprint 1/HU-13 Sucursales","","normal","HU-13, CA-03, Media","Luis Angel","**Precondiciones:** Sucursal activa.
+
+**Datos de prueba:** sucursal activa -> inactiva
+
+**Pasos:**
+1. Abrir /sucursales.
+2. Presionar cambiar estado.
+3. Confirmar.
+
+**Resultado esperado:** El estado se actualiza sin eliminar la sucursal.
+
+**Criterio de aceptacion:** La sucursal pasa de activa a inactiva correctamente.
+
+**Automatizacion:** SucursalTest.php, hu13_sucursales.feature","",""
+"","TC-13 - Registrar un producto (cama)","automated","Sprint 2/HU-04 Productos","","normal","HU-04, CA-01, Media","Luis Angel","**Precondiciones:** Usuario con permiso de almacen.
+
+**Datos de prueba:** codigo: CAM-001 | nombre: Cama Behat | categoria: Camas | costo: 1000 | precio: 1500 | stock: 10 | stock_minimo: 2
+
+**Pasos:**
+1. Abrir /productos/crear.
+2. Completar los datos.
+3. Guardar.
+
+**Resultado esperado:** El producto se guarda y aparece en el catalogo.
+
+**Criterio de aceptacion:** El sistema registra el producto con su categoria y precios.
+
+**Automatizacion:** ProductoTest.php, hu04_productos.feature, ProductoTest.java","",""
+"","TC-14 - Datos obligatorios del producto","automated","Sprint 2/HU-04 Productos","","normal","HU-04, CA-02, Media","Luis Angel","**Precondiciones:** Formulario de producto.
+
+**Datos de prueba:** nombre vacio | codigo duplicado
+
+**Pasos:**
+1. Abrir /productos/crear.
+2. Dejar campos obligatorios vacios.
+3. Guardar.
+
+**Resultado esperado:** Muestra errores de validacion y no guarda el producto.
+
+**Criterio de aceptacion:** El sistema exige los datos obligatorios antes de guardar.
+
+**Automatizacion:** ProductoTest.php, hu04_productos.feature","",""
+"","TC-15 - El producto aparece en el catalogo","automated","Sprint 2/HU-04 Productos","","normal","HU-04, CA-03, Media","Luis Angel","**Precondiciones:** Producto creado.
+
+**Datos de prueba:** producto CAM-001
+
+**Pasos:**
+1. Abrir /productos.
+2. Buscar el producto.
+
+**Resultado esperado:** El producto se lista con su precio y stock.
+
+**Criterio de aceptacion:** El producto registrado se muestra en el catalogo.
+
+**Automatizacion:** ProductoTest.php, hu04_productos.feature","",""
+"","TC-16 - Actualizar la cantidad disponible","automated","Sprint 2/HU-05 Stock","","high","HU-05, CA-01, Alta","Luis Angel","**Precondiciones:** Producto con stock registrado.
+
+**Datos de prueba:** producto: Cama Behat | sucursal: Sucursal Behat | cantidad: 10
+
+**Pasos:**
+1. Abrir /productos.
+2. Presionar Actualizar stock.
+3. Ingresar la cantidad.
+4. Guardar.
+
+**Resultado esperado:** El stock queda en 10 y se muestra actualizado.
+
+**Criterio de aceptacion:** El sistema guarda la nueva cantidad disponible.
+
+**Automatizacion:** StockTest.php, hu05_stock.feature, StockTest.java","",""
+"","TC-17 - Validar una cantidad invalida","automated","Sprint 2/HU-05 Stock","","high","HU-05, CA-02, Alta","Luis Angel","**Precondiciones:** Formulario de stock.
+
+**Datos de prueba:** cantidad: -1 | cantidad: texto
+
+**Pasos:**
+1. Abrir la actualizacion de stock.
+2. Ingresar un valor invalido.
+3. Guardar.
+
+**Resultado esperado:** Rechaza el valor y muestra un error de validacion.
+
+**Criterio de aceptacion:** El sistema no acepta cantidades negativas ni texto.
+
+**Automatizacion:** ProductoTest.php, StockTest.php, hu05_stock.feature","",""
+"","TC-18 - Visualizar el nuevo stock","automated","Sprint 2/HU-05 Stock","","high","HU-05, CA-03, Alta","Luis Angel","**Precondiciones:** Stock actualizado.
+
+**Datos de prueba:** stock actualizado a 25
+
+**Pasos:**
+1. Abrir /productos.
+2. Revisar la columna de stock.
+
+**Resultado esperado:** La pantalla muestra '25 unid.'.
+
+**Criterio de aceptacion:** El nuevo stock se refleja en la interfaz.
+
+**Automatizacion:** StockTest.php, hu05_stock.feature, StockTest.java","",""
+"","TC-19 - Mostrar productos y cantidad disponible","automated","Sprint 3/HU-06 Inventario","","normal","HU-06, CA-01, Media","Luis Angel","**Precondiciones:** Stock registrado por sucursal.
+
+**Datos de prueba:** inventario con stock
+
+**Pasos:**
+1. Abrir /inventario.
+2. Revisar el listado.
+
+**Resultado esperado:** Lista productos con su cantidad por sucursal.
+
+**Criterio de aceptacion:** El inventario muestra productos y cantidades disponibles.
+
+**Automatizacion:** InventarioTest.php, hu06_inventario.feature, InventarioTest.java","",""
+"","TC-20 - Consultar productos de tipo cama","automated","Sprint 3/HU-06 Inventario","","normal","HU-06, CA-02, Media","Luis Angel","**Precondiciones:** Productos de varias categorias.
+
+**Datos de prueba:** categoria: Camas
+
+**Pasos:**
+1. Abrir /inventario.
+2. Filtrar por categoria Camas.
+
+**Resultado esperado:** Solo muestra productos de la categoria elegida.
+
+**Criterio de aceptacion:** El filtro por categoria funciona correctamente.
+
+**Automatizacion:** InventarioTest.php, hu06_inventario.feature","",""
+"","TC-21 - La cantidad coincide con el stock registrado","automated","Sprint 3/HU-06 Inventario","","normal","HU-06, CA-03, Media","Luis Angel","**Precondiciones:** Stock guardado en la base.
+
+**Datos de prueba:** stock registrado en la BD
+
+**Pasos:**
+1. Abrir /inventario.
+2. Comparar con la base de datos.
+
+**Resultado esperado:** La cantidad mostrada iguala el stock guardado.
+
+**Criterio de aceptacion:** La interfaz refleja el stock real de la base de datos.
+
+**Automatizacion:** InventarioTest.php, hu06_inventario.feature","",""
+"","TC-22 - Ver movimientos de entrada y salida","automated","Sprint 3/HU-07 Movimientos","","normal","HU-07, CA-01, Media","Luis Angel","**Precondiciones:** Movimientos de ingreso y venta.
+
+**Datos de prueba:** movimientos registrados
+
+**Pasos:**
+1. Abrir /inventario/movimientos.
+2. Revisar el listado.
+
+**Resultado esperado:** Se listan ambos tipos de movimiento.
+
+**Criterio de aceptacion:** El sistema muestra entradas y salidas de inventario.
+
+**Automatizacion:** MovimientoTest.php, hu07_movimientos.feature, MovimientoTest.java","",""
+"","TC-23 - Datos minimos de cada movimiento","automated","Sprint 3/HU-07 Movimientos","","normal","HU-07, CA-02, Media","Luis Angel","**Precondiciones:** Movimientos registrados.
+
+**Datos de prueba:** producto, tipo, cantidad y fecha
+
+**Pasos:**
+1. Abrir el listado de movimientos.
+2. Revisar cada fila.
+
+**Resultado esperado:** Cada fila muestra producto, tipo, cantidad y fecha.
+
+**Criterio de aceptacion:** Los movimientos incluyen los datos minimos requeridos.
+
+**Automatizacion:** MovimientoTest.php, hu07_movimientos.feature","",""
+"","TC-24 - Consultar los movimientos registrados","automated","Sprint 3/HU-07 Movimientos","","normal","HU-07, CA-03, Media","Luis Angel","**Precondiciones:** Movimientos en la base.
+
+**Datos de prueba:** movimientos existentes
+
+**Pasos:**
+1. Abrir el listado de movimientos.
+
+**Resultado esperado:** El listado carga los movimientos sin errores.
+
+**Criterio de aceptacion:** El usuario puede consultar todos los movimientos.
+
+**Automatizacion:** MovimientoTest.php, hu07_movimientos.feature","",""
+"","TC-25 - Seleccionar el producto y registrar la cantidad","automated","Sprint 3/HU-08 Ingreso","","high","HU-08, CA-01, Alta","Luis Angel","**Precondiciones:** Producto y sucursal existentes.
+
+**Datos de prueba:** producto: Cama Behat | cantidad: 5 | motivo: Ingreso BDD
+
+**Pasos:**
+1. Abrir /inventario/ingreso.
+2. Elegir producto y sucursal.
+3. Ingresar la cantidad.
+4. Guardar.
+
+**Resultado esperado:** El ingreso se guarda y muestra mensaje de confirmacion.
+
+**Criterio de aceptacion:** El sistema registra el ingreso de mercaderia.
+
+**Automatizacion:** IngresoTest.php, hu08_ingreso.feature, IngresoTest.java","",""
+"","TC-26 - Incrementar el stock al confirmar el ingreso","automated","Sprint 3/HU-08 Ingreso","","high","HU-08, CA-02, Alta","Luis Angel","**Precondiciones:** Stock actual de 10 unidades.
+
+**Datos de prueba:** stock 10 + ingreso 5
+
+**Pasos:**
+1. Registrar un ingreso de 5 unidades.
+2. Revisar el stock.
+
+**Resultado esperado:** El stock pasa de 10 a 15.
+
+**Criterio de aceptacion:** El stock aumenta segun la cantidad ingresada.
+
+**Automatizacion:** StockTest.php, IngresoTest.php, hu08_ingreso.feature","",""
+"","TC-27 - Registrar el ingreso como movimiento","automated","Sprint 3/HU-08 Ingreso","","high","HU-08, CA-03, Alta","Luis Angel","**Precondiciones:** Ingreso confirmado.
+
+**Datos de prueba:** ingreso de 5 unidades
+
+**Pasos:**
+1. Registrar el ingreso.
+2. Abrir movimientos.
+
+**Resultado esperado:** Se crea un movimiento de tipo entrada.
+
+**Criterio de aceptacion:** Cada ingreso queda registrado como movimiento de entrada.
+
+**Automatizacion:** IngresoTest.php, hu08_ingreso.feature","",""
+"","TC-28 - Registrar una venta con stock disponible","automated","Sprint 4/HU-09 Ventas","","high","HU-09, CA-01, Alta","Luis Angel","**Precondiciones:** Producto con stock suficiente.
+
+**Datos de prueba:** sucursal: Sucursal Behat | cantidad: 2
+
+**Pasos:**
+1. Abrir /ventas/nueva.
+2. Elegir producto y cantidad.
+3. Registrar la venta.
+
+**Resultado esperado:** La venta se registra y muestra 'Venta registrada'.
+
+**Criterio de aceptacion:** El sistema permite vender si hay stock suficiente.
+
+**Automatizacion:** VentaTest.php, hu09_ventas.feature, VentaTest.java","",""
+"","TC-29 - Rechazar una venta que supera el stock","automated","Sprint 4/HU-09 Ventas","","high","HU-09, CA-02, Alta","Luis Angel","**Precondiciones:** Producto sin stock suficiente.
+
+**Datos de prueba:** producto sin stock | cantidad: 999
+
+**Pasos:**
+1. Abrir /ventas/nueva.
+2. Elegir el producto.
+3. Ingresar 999 unidades.
+4. Registrar.
+
+**Resultado esperado:** Muestra 'Stock insuficiente...' y no crea la venta.
+
+**Criterio de aceptacion:** El sistema no permite vender mas de lo disponible.
+
+**Automatizacion:** VentaTest.php, hu09_ventas.feature","",""
+"","TC-30 - Disminuir el stock al confirmar la venta","automated","Sprint 4/HU-09 Ventas","","high","HU-09, CA-03, Alta","Luis Angel","**Precondiciones:** Stock disponible.
+
+**Datos de prueba:** venta de 2 unidades
+
+**Pasos:**
+1. Registrar una venta de 2 unidades.
+2. Revisar el stock.
+
+**Resultado esperado:** El stock disminuye en 2.
+
+**Criterio de aceptacion:** El stock se descuenta al confirmar la venta.
+
+**Automatizacion:** StockTest.php, VentaTest.php, hu09_ventas.feature","",""
+"","TC-31 - Ver la lista de ventas","automated","Sprint 4/HU-10 Historial","","normal","HU-10, CA-01, Media","Luis Angel","**Precondiciones:** Ventas registradas.
+
+**Datos de prueba:** ventas existentes
+
+**Pasos:**
+1. Abrir /ventas.
+
+**Resultado esperado:** Lista con fecha, productos y monto total.
+
+**Criterio de aceptacion:** El historial muestra las ventas realizadas.
+
+**Automatizacion:** HistorialTest.php, hu10_historial.feature, HistorialTest.java","",""
+"","TC-32 - Consultar el detalle de una venta","automated","Sprint 4/HU-10 Historial","","normal","HU-10, CA-02, Media","Luis Angel","**Precondiciones:** Venta existente.
+
+**Datos de prueba:** venta registrada
+
+**Pasos:**
+1. Abrir /ventas.
+2. Presionar el detalle de una venta.
+
+**Resultado esperado:** Muestra las lineas, cantidades y total.
+
+**Criterio de aceptacion:** El detalle de la venta muestra sus productos y montos.
+
+**Automatizacion:** HistorialTest.php, hu10_historial.feature","",""
+"","TC-33 - Filtrar las ventas por fecha","automated","Sprint 4/HU-10 Historial","","low","HU-10, CA-03, Baja","Luis Angel","**Precondiciones:** Ventas en distintas fechas.
+
+**Datos de prueba:** rango: 2026-01-01 a 2026-12-31
+
+**Pasos:**
+1. Abrir /ventas.
+2. Elegir el rango de fechas.
+3. Filtrar.
+
+**Resultado esperado:** Solo muestra ventas dentro del rango.
+
+**Criterio de aceptacion:** El filtro por fecha devuelve las ventas del periodo.
+
+**Automatizacion:** HistorialTest.php, hu10_historial.feature","",""

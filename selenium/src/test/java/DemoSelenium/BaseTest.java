@@ -1,11 +1,17 @@
 package DemoSelenium;
 
 import com.warrenstrange.googleauth.GoogleAuthenticator;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.nio.file.Files;
 import java.time.Duration;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,10 +42,29 @@ public abstract class BaseTest {
     }
 
     @AfterEach
-    public void cerrarChrome() {
-        if (driver != null) {
-            driver.quit();
+    public void cerrarChrome(TestInfo info) {
+        if (driver == null) {
+            return;
         }
+
+        try {
+            String clase = info.getTestClass().map(Class::getSimpleName).orElse("Test");
+            String metodo = info.getTestMethod().map(Method::getName).orElse("caso");
+            guardarCaptura(clase + "_" + metodo);
+        } catch (Exception e) {
+            System.out.println("No se pudo guardar la captura: " + e.getMessage());
+        }
+
+        driver.quit();
+    }
+
+    protected void guardarCaptura(String nombre) throws Exception {
+        File carpeta = new File(System.getProperty("user.dir"), "../docs/pruebas/evidencias/selenium");
+        carpeta.mkdirs();
+
+        File destino = new File(carpeta, nombre + ".png");
+        byte[] imagen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Files.write(destino.toPath(), imagen);
     }
 
     protected void iniciarSesion(String usuario, String clave) {

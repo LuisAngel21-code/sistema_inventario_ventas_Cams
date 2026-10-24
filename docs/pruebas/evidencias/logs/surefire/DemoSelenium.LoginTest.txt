@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: DemoSelenium.LoginTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.249 s -- in DemoSelenium.LoginTest

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Guia Testomat - Tienda Cams</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1e293b; font-size: 11pt; line-height: 1.5; }
+  h1 { font-size: 22pt; color: #1e3a5f; margin: 0 0 4px; }
+  h2 { font-size: 14pt; color: #1e3a5f; margin: 22px 0 8px; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
+  .sub { color: #64748b; margin: 0 0 18px; }
+  ol, ul { margin: 6px 0 6px 18px; padding: 0; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 10pt; }
+  th { background: #1e3a5f; color: #fff; text-align: left; padding: 7px; }
+  td { border: 1px solid #e2e8f0; padding: 6px 7px; vertical-align: top; }
+  .box { background: #f1f5f9; border-left: 4px solid #1e3a5f; padding: 10px 14px; margin: 10px 0; }
+  .ok { color: #15803d; font-weight: 600; }
+  code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: 10pt; }
+  .pie { margin-top: 28px; color: #94a3b8; font-size: 9pt; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>Guia de Testomat.io</h1>
+<p class="sub">Proyecto Tienda Cams - Sistema de inventario y ventas | Sprints 1 al 4</p>
+
+<div class="box">
+  <strong>Objetivo:</strong> registrar los 33 casos de prueba en Testomat.io (plan gratuito), ejecutar la corrida,
+  registrar los defectos y exportar el reporte en PDF.
+</div>
+
+<h2>1. Crear la cuenta y el proyecto</h2>
+<ol>
+  <li>Entrar a <code>https://app.testomat.io</code> y crear una cuenta gratuita.</li>
+  <li>Crear un proyecto llamado <strong>Tienda Cams - Inventario y Ventas</strong> (tipo Classical).</li>
+</ol>
+
+<h2>2. Importar los casos</h2>
+<ol>
+  <li>Abrir la pestana <strong>Tests</strong>.</li>
+  <li>En el menu <code>...</code> elegir <strong>Import from other TMS</strong>.</li>
+  <li>Presionar <strong>Import</strong> y elegir <strong>Import from CSV</strong>.</li>
+  <li>En el origen seleccionar <strong>Testomat.io</strong>.</li>
+  <li>Elegir el archivo <code>Casos_Prueba_Testomat.csv</code> y presionar <strong>Create</strong>.</li>
+</ol>
+<p>El archivo ya trae los 33 casos con carpeta por sprint, prioridad, datos de prueba, pasos, resultado esperado y criterio de aceptacion.</p>
+
+<h2>3. Revisar la estructura</h2>
+<table>
+  <tr><th>Sprint</th><th>Historias</th><th>Casos</th></tr>
+  <tr><td>Sprint 1</td><td>HU-01, HU-02, HU-03, HU-13</td><td>TC-01 a TC-12</td></tr>
+  <tr><td>Sprint 2</td><td>HU-04, HU-05</td><td>TC-13 a TC-18</td></tr>
+  <tr><td>Sprint 3</td><td>HU-06, HU-07, HU-08</td><td>TC-19 a TC-27</td></tr>
+  <tr><td>Sprint 4</td><td>HU-09, HU-10</td><td>TC-28 a TC-33</td></tr>
+</table>
+
+<h2>4. Ejecutar la corrida</h2>
+<ol>
+  <li>Ir a <strong>Test Runs</strong> y crear una corrida llamada <strong>Ejecucion Sprint 1-4</strong>.</li>
+  <li>Agregar todos los casos del proyecto.</li>
+  <li>Marcar cada caso como <strong>Passed</strong> (las tres suites automatizadas ya pasaron: 56 PHPUnit, 33 Behat y 13 Selenium).</li>
+  <li>Adjuntar a cada caso la captura correspondiente de la carpeta <code>evidencias/selenium</code>.</li>
+</ol>
+<div class="box">
+  <span class="ok">Resultado de la ejecucion local:</span> 56 pruebas PHPUnit, 33 escenarios Behat y 14 pruebas Selenium, todas aprobadas.
+</div>
+
+<h2>5. Registrar los defectos</h2>
+<p>En <strong>Issues</strong> crear los dos defectos del archivo <code>Registro_Defectos.xlsx</code> y vincularlos al caso TC-29.</p>
+<table>
+  <tr><th>ID</th><th>Defecto</th><th>Estado</th></tr>
+  <tr><td>DEF-01</td><td>Venta mayor al stock mostraba pagina de error 422 en vez de un mensaje en el formulario</td><td>Cerrado</td></tr>
+  <tr><td>DEF-02</td><td>.env.example usaba SESSION_DRIVER=database sin crear la tabla sessions</td><td>Cerrado</td></tr>
+</table>
+
+<h2>6. Exportar el reporte</h2>
+<ol>
+  <li>Abrir <strong>Reports</strong> y elegir la corrida ejecutada.</li>
+  <li>Exportar en <strong>PDF</strong>.</li>
+  <li>Guardar el archivo junto a este paquete.</li>
+</ol>
+
+<h2>7. Volver a correr las pruebas</h2>
+<p>Con SQL Server activo y la aplicacion en <code>http://localhost:8000</code>:</p>
+<table>
+  <tr><th>Nivel</th><th>Comando</th></tr>
+  <tr><td>Unitarias e integracion</td><td><code>C:\php\php.exe artisan test</code></td></tr>
+  <tr><td>BDD (Behat)</td><td><code>C:\php\php.exe vendor\bin\behat</code></td></tr>
+  <tr><td>E2E (Selenium)</td><td><code>cd selenium</code> y luego <code>mvn test</code></td></tr>
+  <tr><td>Las tres</td><td><code>powershell -File pruebas.ps1</code></td></tr>
+</table>
+
+<h2>8. Contenido del paquete</h2>
+<ul>
+  <li><code>Casos_Prueba_Testomat.csv</code>: archivo para importar a Testomat.</li>
+  <li><code>Casos_Prueba.xlsx</code>: matriz completa con hojas Casos, Resumen y Cobertura.</li>
+  <li><code>Registro_Defectos.xlsx</code>: los dos defectos con evidencia y commit.</li>
+  <li><code>evidencias/selenium</code>: capturas automaticas de las pruebas.</li>
+  <li><code>evidencias/logs</code>: resultados de PHPUnit, Behat y Selenium.</li>
+</ul>
+
+<p class="pie">Tienda Cams - Guia generada automaticamente</p>
+
+</body>
+</html>
